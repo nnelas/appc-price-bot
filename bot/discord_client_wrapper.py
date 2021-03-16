@@ -34,11 +34,12 @@ class DiscordClientWrapper(discord.Client):
             price_usd = self.__appc_price_repository.get_last_price("USD")
             price_eur = self.__appc_price_repository.get_last_price("EUR")
             percentage = self.__appc_price_repository.get_price_change_percentage()
-            if None not in [price_usd, price_eur, percentage]:
+            if None in [price_usd, price_eur, percentage]:
+                await message.channel.send(TemplateMessages.get_failure_message())
+            else:
                 await message.channel.send(
                     TemplateMessages.get_price_message(price_usd, price_eur, percentage)
                 )
-
             await message.channel.send(TemplateMessages.get_failure_message())
         elif message.content == "/ping":
             await message.channel.send(TemplateMessages.get_ping_message())
