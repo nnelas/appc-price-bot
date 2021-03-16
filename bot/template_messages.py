@@ -5,8 +5,8 @@ class TemplateMessages:
     @staticmethod
     def get_increase_message(percentage: str) -> str:
         return (
-            f"APPC TO THE MOON!!! :rocket: :rocket: "
-            f"\n\n(price change: {percentage})"
+            f"APPC TO THE MOON!!! :rocket: :rocket: \n"
+            f"(price change: {percentage})"
         )
 
     @staticmethod
@@ -14,8 +14,8 @@ class TemplateMessages:
         return (
             f"STONKS ONLY GO UP!!! "
             f":stonks:821467993141542932 "
-            f":stonks:821467993141542932"
-            f"\n\n(price change: {percentage})"
+            f":stonks:821467993141542932 \n"
+            f"(price change: {percentage})"
         )
 
     @staticmethod
