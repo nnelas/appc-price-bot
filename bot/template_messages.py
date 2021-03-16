@@ -28,3 +28,7 @@ class TemplateMessages:
     @staticmethod
     def get_failure_message() -> str:
         return "Failed to get current APPC stats. Try again later. :poop:"
+
+    @staticmethod
+    def get_ping_message() -> str:
+        return "Pong! :ping_pong:"

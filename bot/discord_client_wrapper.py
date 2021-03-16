@@ -30,7 +30,7 @@ class DiscordClientWrapper(discord.Client):
         if message.author == self.user:
             return
 
-        if message.content == "$price":
+        if message.content == "/price":
             price_usd = self.__appc_price_repository.get_last_price("USD")
             price_eur = self.__appc_price_repository.get_last_price("EUR")
             percentage = self.__appc_price_repository.get_price_change_percentage()
@@ -40,3 +40,5 @@ class DiscordClientWrapper(discord.Client):
                 )
 
             await message.channel.send(TemplateMessages.get_failure_message())
+        elif message.content == "/ping":
+            await message.channel.send(TemplateMessages.get_ping_message())

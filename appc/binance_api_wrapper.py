@@ -19,7 +19,7 @@ class BinanceApiWrapper:
 
     def get_24h_ticker_stats(self, symbol: str) -> BinanceApiResponse:
         try:
-            url = self.__base_host + "/api/v3/ticker/25hr"
+            url = self.__base_host + "/api/v3/ticker/24hr"
             params = {"symbol": symbol}
             response = requests.get(url, params=params, timeout=self.__timeout)
             return self.__binance_api_response_mapper.map(response)
