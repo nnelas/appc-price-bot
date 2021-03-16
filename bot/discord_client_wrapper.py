@@ -40,6 +40,5 @@ class DiscordClientWrapper(discord.Client):
                 await message.channel.send(
                     TemplateMessages.get_price_message(price_usd, price_eur, percentage)
                 )
-            await message.channel.send(TemplateMessages.get_failure_message())
         elif message.content == "/ping":
             await message.channel.send(TemplateMessages.get_ping_message())
