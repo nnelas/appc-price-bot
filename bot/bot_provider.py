@@ -3,16 +3,22 @@ from typing import Optional
 
 from appc.appc_provider import appc_provider
 from bot.discord_client_wrapper import DiscordClientWrapper
+from bot.discord_tasks_manager import DiscordTasksManager
 
 
 class BotProvider:
     def __init__(self):
         self.__appc_price_repository = appc_provider.provide_appc_price_repository()
         self.__token = self.__get_discord_token()
+        self.__discord_tasks_manager = DiscordTasksManager(
+            817374892378947651, self.__appc_price_repository
+        )
 
     def provide_discord_client_wrapper(self) -> DiscordClientWrapper:
         return DiscordClientWrapper(
-            self.__appc_price_repository, self.__token, 817374892378947651
+            self.__appc_price_repository,
+            self.__token,
+            self.__discord_tasks_manager,
         )
 
     def __get_discord_token(self) -> Optional[str]:
