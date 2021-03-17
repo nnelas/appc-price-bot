@@ -14,8 +14,8 @@ class TemplateMessages:
     def get_decrease_message(percentage: str) -> str:
         return (
             f"STONKS ONLY GO UP!!! "
-            f":stonks:821467993141542932 "
-            f":stonks:821467993141542932 \n"
+            f"<:stonks:821467993141542932> "
+            f"<:stonks:821467993141542932> \n"
             f"(price change: {percentage})\n"
             f"https://www.youtube.com/watch?v=Kdmg1FZHPTA"
         )
