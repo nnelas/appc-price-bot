@@ -3,20 +3,24 @@ class TemplateMessages:
         pass
 
     @staticmethod
-    def get_increase_message(percentage: str) -> str:
+    def get_increase_message(
+        price_usd: float, price_eur: float, percentage: str
+    ) -> str:
         return (
             f"APPC TO THE MOON!!! :rocket: :rocket: \n"
-            f"(price change: {percentage})\n"
+            f"({TemplateMessages.get_price_message(price_usd, price_eur, percentage)})\n"
             f"https://www.youtube.com/watch?v=V1CsOkcfVeo"
         )
 
     @staticmethod
-    def get_decrease_message(percentage: str) -> str:
+    def get_decrease_message(
+        price_usd: float, price_eur: float, percentage: str
+    ) -> str:
         return (
             f"STONKS ONLY GO UP!!! "
             f"<:stonks:821467993141542932> "
             f"<:stonks:821467993141542932> \n"
-            f"(price change: {percentage})\n"
+            f"({TemplateMessages.get_price_message(price_usd, price_eur, percentage)})\n"
             f"https://www.youtube.com/watch?v=Kdmg1FZHPTA"
         )
 

@@ -42,14 +42,20 @@ class DiscordTasksManager:
             self.__logger.warning("Failed to get current APPC stats.")
             return
 
+        price_usd = self.__appc_price_repository.get_last_price("USD")
+        price_eur = self.__appc_price_repository.get_last_price("EUR")
         percentage = stats.get_formatted_price_change()
         self.__logger.info(f"Got: {stats}")
 
         if stats.price_change_percent >= 20:
             self.__logger.info("Increased more than 20%, sending message")
             self.__last_message_datetime = now
-            await self.__channel.send(TemplateMessages.get_increase_message(percentage))
+            await self.__channel.send(
+                TemplateMessages.get_increase_message(price_usd, price_eur, percentage)
+            )
         elif stats.price_change_percent <= -10:
             self.__logger.info("Decreased more than 10%, sending message")
             self.__last_message_datetime = now
-            await self.__channel.send(TemplateMessages.get_decrease_message(percentage))
+            await self.__channel.send(
+                TemplateMessages.get_decrease_message(price_usd, price_eur, percentage)
+            )
